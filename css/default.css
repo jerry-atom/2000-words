@@ -1,20 +1,39 @@
-.row {
-    border-bottom: 1pt solid silver;
+ul {
+    margin: 0;
 }
 
-.row>div {
-    padding-top: 7px;
-    padding-bottom: 7px;
+.container-fluid {
+    padding: 5px;
 }
 
-.row>div:first-child>b {
-    font-size: 18px;
+.card {
+    margin-top: 10px;
 }
 
-hr {
-    margin: 3px 0px;
+.card ul {
+    padding-left: 20px; 
 }
 
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.icon-megaphone {
+    -webkit-mask: url(../svg/megaphone.svg) no-repeat center;
+    -webkit-mask-size: contain;
+    mask: url(../svg/megaphone.svg) no-repeat center;
+}
+
+.btn-outline-info .icon {
+    background-color: #17a2b8;
+}
+.btn-outline-info:hover .icon {
+    background-color: #ffffff;
+}
 
 /* spinner */
 

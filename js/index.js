@@ -11,39 +11,45 @@ function shuffle(array) {
 }
 
 function renderTable(container, data) {  
-    container.get(0).innerHTML = data.map((item) => {
+    const list = data.map((item, i) => {
         let trans = ""
-        let pron = ""
 
         if (item.trans) {
-            trans = item.trans.map((t) => t.join(", ")).join("<hr>")
-        }
-        if (item.audio) {
-            pron = `
-            <button type="button" class="btn btn-outline-info" data-target="${item.audio}">${item.pron}</button>
-            <audio preload="none" data-source="${item.audio}">
-                <source type="audio/ogg" src="audio/${item.audio}">
-            </audio>`
-        } else {
-            pron = `
-            <span class="btn btn-outline-secondary">${item.pron}</span>`
+            trans = item.trans.map((t) => `<li>${t.join(", ")}</li>`).join("")
         }
 
-        return `<div class="row">
-            <div class="col-sm"><b>${item.word}</b><br>${pron}</div>
-            <div class="col-sm">${trans}</div>
-        </div>`
-    }).join('')
+        const pron = item.audio
+            ? `<button type="button" class="btn btn-outline-info play" data-target="#pron-${i}">
+                <i class="icon icon-megaphone"></i>
+                ${item.pron}
+            </button>
+            <audio preload="none" id="pron-${i}">
+                <source type="audio/ogg" src="audio/${item.audio}">
+            </audio>`
+            : `<span class="btn btn-outline-secondary">${item.pron}</span>`
+
+        return `<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#trans-${i}" aria-expanded="false" aria-controls="trans-${i}">${item.word}</button>
+                ${pron}
+                <div class="collapse" id="trans-${i}"> 
+                    <div class="card card-body"> 
+                        <ul>${trans}</ul>
+                    </div>
+                </div>`
+    })
+        .map((x) => `<li class="list-group-item">${x}</li>`)
+        
+    
+    container.get(0).innerHTML = `${list.join('')}`
 }
 
 $.getJSON("words.json")
     .done((data) => {
         const $container = $("#container")
 
-        $container.on("click", "button", (element) => {
+        $container.on("click", "button.play, button.play *", (element) => {
             try {
-                const target = $(element.target).data("target")
-                const audio = $container.find(`audio[data-source="${target}"]`)
+                const target = $(element.target).closest("button").data("target")
+                const audio = $container.find(target)
                 if (audio) {
                     audio.get(0).play()
                 }
