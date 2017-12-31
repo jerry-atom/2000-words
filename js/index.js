@@ -42,6 +42,17 @@ function renderTable(container, data) {
     container.get(0).innerHTML = `${list.join('')}`
 }
 
+function randomize($container, data) {
+    const $head = $("head")
+
+    items = shuffle(data).slice(0, 10)
+
+    items.filter(item => !!item.audio)
+        .forEach((item) => $head.append(`<link rel="preload" href="audio/${item.audio}" as="audio">`))
+
+    renderTable($container, items)
+}
+
 $.getJSON("words.json")
     .done((data) => {
         const $container = $("#container")
@@ -58,13 +69,8 @@ $.getJSON("words.json")
             }
         })
 
-        const $head = $("head")
-        const items = shuffle(data).slice(0, 10)
+        $("#randomize").on("click", () => randomize($container, data))
 
-        items.filter(item => !!item.audio)
-            .forEach((item) => $head.append(`<link rel="preload" href="audio/${item.audio}" as="audio">`))
-
-        renderTable($container, items)
-
+        randomize($container, data)
     })
     .fail(alert)

@@ -17,22 +17,33 @@ ul {
 .icon {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 10px;
     width: 16px;
     height: 16px;
+    -webkit-mask-size: contain;
+}
+
+.icon-sync {
+    -webkit-mask: url(../svg/sync.svg) no-repeat center;
+    mask: url(../svg/sync.svg) no-repeat center;
+    background-color: white;
 }
 
 .icon-megaphone {
     -webkit-mask: url(../svg/megaphone.svg) no-repeat center;
-    -webkit-mask-size: contain;
     mask: url(../svg/megaphone.svg) no-repeat center;
 }
 
 .btn-outline-info .icon {
+    margin-right: 10px;
     background-color: #17a2b8;
 }
 .btn-outline-info:hover .icon {
     background-color: #ffffff;
+}
+
+#randomize .icon {
+    width: 30px;
+    height: 30px;
 }
 
 /* spinner */

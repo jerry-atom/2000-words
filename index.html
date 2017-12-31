@@ -19,13 +19,23 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <span class="navbar-brand">
+            <img src="svg/flag-uk.svg" width="30" height="30" alt="">
+            &nbsp;
+            2000 words
+        </span>
+        <button type="button" class="navbar-toggler" id="randomize">
+            <i class="icon icon-sync"></i>
+        </button>
+    </nav>
+    <main role="main" class="container-fluid">
         <ul class="list-group" id="container">
             <li class="list-group-item">
                 <div class="loader">Loading...</div>
             </li>
         </ul>
-    </div>
+    </main>
     <script src="js/index.js"></script>
 </body>
 
