@@ -1,0 +1,25 @@
+{
+    "short_name": "2000 words",
+    "name": "2000 words",
+    "icons": [
+      {
+        "src": "img/icon-1x.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "img/icon-2x.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "img/icon-4x.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "index.html",
+    "display": "standalone",
+    "theme_color": "#343a40",
+    "background_color": "#ffffff"
+  }
